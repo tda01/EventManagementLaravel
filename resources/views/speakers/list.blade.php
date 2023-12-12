@@ -11,7 +11,11 @@
             <div class="card-header">
                 Speakers
             </div>
+
             <div class="card-body">
+                <div class="text-end ">
+                    <a href="{{ route('speakers.create') }}" class="btn btn-sm btn-primary">Add Speaker</a>
+                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -34,9 +38,16 @@
                                 <td class="align-middle">{{ $speaker->occupation }}</td>
                                 <td class="align-middle">{{ $speaker->email }}</td>
                                 <td class="align-middle">{{ $speaker->img }}</td>
-                                <td>
-                                    <a class="btn btn-success" href="">Vizualizare</a>
-                                    <a class="btn btn-primary" href="">Modificare</a>
+                                <td class="align-middle">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a class="btn btn-success" href="{{
+route('speakers.show',$speaker->id) }}">Vizualizare</a>
+                                        <a class="btn btn-primary" href="{{
+route('speakers.edit',$speaker->id) }}">Modificare</a>
+                                        {{ Form::open(['method' => 'DELETE','route' => ['speakers.destroy', $speaker->id],'style'=>'display:inline']) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

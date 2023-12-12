@@ -2,8 +2,8 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-/*body {*/
-/*    background-image: linear-gradient(to right top, #400e46, #4d1149, #59144c, #66184f, #721c51, #7d2152, #872653, #912b54, #9c3254, #a73955, #b14154, #bb4954);*/
-/*    background-size: cover;*/
-/*    height: 100vh;*/
-/*}*/
+body {
+    background-image: linear-gradient(to right top, #400e46, #4d1149, #59144c, #66184f, #721c51, #7d2152, #872653, #912b54, #9c3254, #a73955, #b14154, #bb4954);
+    background-size: cover;
+    height: 100vh;
+}
