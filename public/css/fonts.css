@@ -1,11 +1,25 @@
 html {
     font-family: 'Roboto', sans-serif;
+    height: 100%;
 }
 
 body {
+    margin: 0;
+    height: 100%;
+    overflow: auto; /* Enable scrolling */
+    position: relative; /* Required for the pseudo-element */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background-image: linear-gradient(to right bottom, #7e22ce, #711eb9, #651ba4, #581790, #4c147c);
     background-size: cover;
-    height: 100vh;
 }
 
 .card {
