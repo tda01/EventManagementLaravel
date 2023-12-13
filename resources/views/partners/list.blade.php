@@ -9,42 +9,42 @@
     <div class="container mt-5">
         <div class="card border-0">
             <div class="card-header custom-card-header fs-4">
-                Speakers
+                Partners
             </div>
 
             <div class="card-body custom-card-body">
                 <div class="text-end ">
-                    <a href="{{ route('speakers.create') }}" class="btn btn-sm btn-primary">Add Speaker</a>
+                    <a href="{{ route('partners.create') }}" class="btn btn-sm btn-primary">Add Partner</a>
                 </div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Occupation</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Website</th>
                         <th scope="col">Img</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @if(count($speakers) > 0)
-                        @foreach($speakers as $key => $speaker)
+                    @if(count($partners) > 0)
+                        @foreach($partners as $key => $partner)
                             <tr>
                                 <th class="align-middle" scope="row">{{ ++$i }}</th>
-                                <td class="align-middle">{{ $speaker->firstName }} {{ $speaker->lastName }}</td>
-                                <td class="align-middle">{{ $speaker->description }}</td>
-                                <td class="align-middle">{{ $speaker->occupation }}</td>
-                                <td class="align-middle">{{ $speaker->email }}</td>
-                                <td class="align-middle">{{ $speaker->img }}</td>
+                                <td class="align-middle">{{ $partner->name }}</td>
+                                <td class="align-middle">{{ $partner->phoneNumber }}</td>
+                                <td class="align-middle">{{ $partner->email }}</td>
+                                <td class="align-middle">{{ $partner->web }}</td>
+                                <td class="align-middle">{{ $partner->img }}</td>
                                 <td class="align-middle">
                                     <div class="d-flex justify-content-center gap-2">
                                         <a class="btn btn-success" href="{{
-route('speakers.show',$speaker->id) }}">Vizualizare</a>
+route('partners.show',$partner->id) }}">Vizualizare</a>
                                         <a class="btn btn-primary" href="{{
-route('speakers.edit',$speaker->id) }}">Modificare</a>
-                                        {{ Form::open(['method' => 'DELETE','route' => ['speakers.destroy', $speaker->id],'style'=>'display:inline']) }}
+route('partners.edit',$partner->id) }}">Modificare</a>
+                                        {{ Form::open(['method' => 'DELETE','route' => ['partners.destroy', $partner->id],'style'=>'display:inline']) }}
                                         {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                         {{ Form::close() }}
                                     </div>
@@ -53,12 +53,12 @@ route('speakers.edit',$speaker->id) }}">Modificare</a>
                         @endforeach
                     @else
                         <tr>
-                            <td colspan=7 class="align-middle">Nu exista speakeri</td>
+                            <td colspan=7 class="align-middle">Nu exista parteneri</td>
                         </tr>
-                     @endif
+                    @endif
                     </tbody>
                 </table>
-                {{$speakers->render()}}
+                {{$partners->render()}}
             </div>
         </div>
     </div>

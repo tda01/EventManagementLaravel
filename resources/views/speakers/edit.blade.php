@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
+        <div class="card border-0">
+            <div class="card-header custom-card-header fs-4">
                 Edit speaker
             </div>
             <div class="card-body">

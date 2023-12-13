@@ -16,26 +16,25 @@
     <link href="{{ asset('/css/fonts.css') }}" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg custom-navbar p-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand fs-4" href="#">Control Panel</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <li class="nav-item fs-5">
+                    <a class="nav-link active" aria-current="page" href="#">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link fs-5" href="{{ route('speakers.index') }}">Speakers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link fs-5" href="{{ route('partners.index') }}">Partners</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto"> <!-- Align items to the right -->
-                <!-- Add the logout button here -->
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <form>
                         @csrf

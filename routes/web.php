@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\PartnerController;
 
 
 
@@ -19,5 +20,5 @@ use App\Http\Controllers\SpeakerController;
 
 Route::get('/', [SpeakerController::class, 'index']);
 Route::resource('speakers', SpeakerController::class);
-
+Route::resource('partners', PartnerController::class);
 
