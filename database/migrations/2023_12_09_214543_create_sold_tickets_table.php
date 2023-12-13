@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('sold_tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('eventID');
+            $table->unsignedBigInteger('ticketTypeID');
             $table->unsignedBigInteger('userID');
             $table->timestamps();
 
-            $table->foreign('eventID')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('userID')->references('id')->on('events')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ticketTypeID')->references('id')->on('ticket_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

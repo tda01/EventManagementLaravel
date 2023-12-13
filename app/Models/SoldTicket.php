@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SoldTicket extends Model
 {
     public $fillable = ['id', 'eventID', 'userID'];
+
+    public function ticketType() {
+        return $this->belongsTo(TicketType::class);
+    }
+
 }

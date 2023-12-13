@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    public $fillable = ['id', 'title', 'location', 'description', 'img', 'price'];
+    public $fillable = ['id', 'title', 'location', 'description', 'img'];
 
     public function contact()
     {
-        return $this->hasOne(Contact::class);
+        return $this->hasOne(Contact::class, 'eventID');
     }
     public function speakers()
     {
@@ -26,6 +26,10 @@ class Event extends Model
     public function eventDays()
     {
         return $this->hasMany(EventDay::class);
+    }
+
+    public function ticketTypes() {
+        return $this->hasMany(TicketType::class);
     }
 
 }

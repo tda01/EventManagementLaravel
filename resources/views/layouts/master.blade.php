@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item fs-5">
-                    <a class="nav-link active" aria-current="page" href="#">Events</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('events.index') }}">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fs-5" href="{{ route('speakers.index') }}">Speakers</a>
