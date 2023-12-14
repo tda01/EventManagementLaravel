@@ -95,6 +95,23 @@
                         </div>
                     </div>
 
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Activities</h5>
+                            <div class="mb-3">
+                                <label for="start_date" class="form-label">Event Start Date *</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                            </div>
+                            <!-- Input field for event end date -->
+                            <div class="mb-3">
+                                <label for="end_date" class="form-label">Event End Date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date">
+                            </div>
+                            <!-- Container to dynamically add day-wise activities -->
+                            <div id="dayActivitiesContainer"></div>
+                        </div>
+                    </div>
+
 
 
                     <div class="mt-3">
@@ -104,4 +121,119 @@
                 {{ Form::close() }}
 
             </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const dayActivitiesContainer = document.getElementById('dayActivitiesContainer');
+                    const startDateInput = document.getElementById('start_date');
+                    const endDateInput = document.getElementById('end_date');
+                    const speakerSelect = document.getElementById('speaker');
+
+                    startDateInput.addEventListener('change', generateDayActivities);
+                    endDateInput.addEventListener('change', generateDayActivities);
+
+                    function generateDayActivities() {
+                        const startDate = new Date(startDateInput.value);
+                        const endDate = new Date(endDateInput.value);
+
+                        if (!startDate || !endDate || startDate > endDate) {
+                            return; // Invalid date range
+                        }
+
+                        dayActivitiesContainer.innerHTML = ''; // Clear existing activities
+
+                        let currentDate = new Date(startDate);
+
+                        while (currentDate <= endDate) {
+                            const dayCard = document.createElement('div');
+                            dayCard.classList.add('card', 'mb-3');
+
+                            const cardBody = document.createElement('div');
+                            cardBody.classList.add('card-body');
+
+                            const dayLabel = document.createElement('h5');
+                            dayLabel.classList.add('card-title');
+                            dayLabel.textContent = `Day (${currentDate.toDateString()})`;
+                            cardBody.appendChild(dayLabel);
+
+                            const activitiesInput = document.createElement('input');
+                            activitiesInput.classList.add('form-control');
+                            activitiesInput.type = 'number';
+                            activitiesInput.min = '0';
+                            activitiesInput.name = `day_activities_${currentDate.toISOString()}`;
+                            activitiesInput.placeholder = 'Number of activities';
+                            cardBody.appendChild(activitiesInput);
+
+                            const activitiesContainer = document.createElement('div');
+                            activitiesContainer.classList.add('activities-container');
+                            cardBody.appendChild(activitiesContainer);
+
+                            activitiesInput.addEventListener('change', function () {
+                                createActivityFields(currentDate, activitiesInput.value, activitiesContainer);
+                            });
+
+                            dayCard.appendChild(cardBody);
+                            dayActivitiesContainer.appendChild(dayCard);
+
+                            // Increment the current date to the next day
+                            currentDate.setDate(currentDate.getDate() + 1);
+                        }
+                    }
+
+                    function createActivityFields(date, numOfActivities, container) {
+                        container.innerHTML = ''; // Clear previous activities
+
+                        for (let i = 1; i <= numOfActivities; i++) {
+                            const activityDiv = document.createElement('div');
+                            activityDiv.classList.add('mb-3');
+
+                            const activityLabel = document.createElement('label');
+                            activityLabel.textContent = `Activity ${i}`;
+                            activityDiv.appendChild(activityLabel);
+
+                            const activityInput = document.createElement('input');
+                            activityInput.classList.add('form-control');
+                            activityInput.type = 'text';
+                            activityInput.name = `day_${date.toISOString()}_activity_${i}`;
+                            activityInput.placeholder = `Activity ${i}`;
+                            activityDiv.appendChild(activityInput);
+
+                            const hourLabel = document.createElement('label');
+                            hourLabel.textContent = `Hour for Activity ${i}`;
+                            activityDiv.appendChild(hourLabel);
+
+                            const hourInput = document.createElement('input');
+                            hourInput.classList.add('form-control');
+                            hourInput.type = 'time';
+                            hourInput.name = `day_${date.toISOString()}_hour_${i}`;
+                            activityDiv.appendChild(hourInput);
+
+                            const selectSpeakerLabel = document.createElement('label');
+                            selectSpeakerLabel.textContent = `Select Speaker for Activity ${i}`;
+                            activityDiv.appendChild(selectSpeakerLabel);
+
+                            const selectSpeaker = document.createElement('select');
+                            selectSpeaker.classList.add('form-select');
+                            selectSpeaker.name = `day_${date.toISOString()}_speaker_${i}`;
+                            selectSpeaker.multiple = true; // Enable multiple selection
+                            const selectSpeakerOption = document.createElement('option');
+                            selectSpeakerOption.value = '';
+                            selectSpeakerOption.textContent = 'Select Speaker';
+                            selectSpeaker.appendChild(selectSpeakerOption);
+
+                            Array.from(speakerSelect.selectedOptions).forEach(option => {
+                                const speakerOption = document.createElement('option');
+                                speakerOption.value = option.value;
+                                speakerOption.textContent = `${option.textContent}`;
+                                selectSpeaker.appendChild(speakerOption);
+                            });
+
+                            activityDiv.appendChild(selectSpeaker);
+                            container.appendChild(activityDiv);
+                        }
+                    }
+                });
+            </script>
+
 @endsection
