@@ -44,7 +44,7 @@
                                         @foreach($event->speakers as $speaker)
                                             {{ $speaker->firstName }} {{ $speaker->lastName }}
                                             @if (!$loop->last)
-                                                <br> <!-- Add a line break if it's not the last speaker -->
+                                                <br>
                                             @endif
                                         @endforeach
                                     @endif

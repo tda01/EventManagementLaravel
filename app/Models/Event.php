@@ -25,11 +25,11 @@ class Event extends Model
 
     public function eventDays()
     {
-        return $this->hasMany(EventDay::class);
+        return $this->hasMany(EventDay::class, 'eventID');
     }
 
     public function ticketTypes() {
-        return $this->hasMany(TicketType::class);
+        return $this->hasMany(TicketType::class, 'eventID');
     }
 
 }

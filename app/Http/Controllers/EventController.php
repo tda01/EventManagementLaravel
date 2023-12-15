@@ -7,6 +7,8 @@ use App\Models\Event;
 use App\Models\Speaker;
 use App\Models\Partner;
 use App\Models\Contact;
+use App\Models\EventDay;
+use App\Models\Activity;
 use Illuminate\Support\Facades\DB;
 
 
@@ -86,6 +88,42 @@ class EventController extends Controller
             }
         }
 
+        $startDate = \Carbon\Carbon::parse($request->input('start_date'));
+        $endDate = \Carbon\Carbon::parse($request->input('end_date'));
+        $dayCount = 0;
+
+        while ($startDate <= $endDate) {
+            $dayCount++;
+
+            $eventDay = EventDay::create([
+                'date' => $startDate->toDateString(),
+                'eventID' => $eventID,
+            ]);
+
+            $eventDayID = $eventDay->id;
+            $activityKey = "day_" . $dayCount . "_activities";
+            $numberOfActivities = $request->input($activityKey);
+
+            for ($i = 1; $i <= $numberOfActivities; $i++) {
+                $activityKey = "day_" . $dayCount . "_activity_" . $i;
+                $title = $request->input($activityKey);
+                $activityKey = "day_" . $dayCount . "_hour_" . $i;
+                $hour = $request->input($activityKey);
+                $activityKey = "day_" . $dayCount . "_speaker_" . $i;
+                $speaker = $request->input($activityKey);
+
+                Activity::create([
+                    'name' => $title,
+                    'hour' => $hour,
+                    'eventDayID' => $eventDayID,
+                    'speakerID' => $speaker,
+                ]);
+            }
+
+
+            $startDate->addDay(); // Move to the next day
+        }
+
 
         return redirect()->route('events.index')->with('success', 'Event
 added successfully!');
@@ -97,7 +135,8 @@ added successfully!');
      */
     public function show(string $id)
     {
-        //
+        $event = Event::find($id);
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -121,6 +160,8 @@ added successfully!');
      */
     public function destroy(string $id)
     {
-        //
+        Event::find($id)->delete();
+        return redirect()->route('events.index')->with('success', 'Event
+removed successfully!');
     }
 }
