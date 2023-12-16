@@ -41,7 +41,7 @@
                             <label for="img" class="form-label">Img</label>
                             <input type="text" class="form-control" id="img" name="img" value="{{$partner->img}}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Partner</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                         <a href="{{ route('partners.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>

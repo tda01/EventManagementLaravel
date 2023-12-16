@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Proiect Laravel</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,6 +26,9 @@
             <ul class="navbar-nav">
                 <li class="nav-item fs-5">
                     <a class="nav-link active" aria-current="page" href="{{ route('events.index') }}">Events</a>
+                </li>
+                <li class="nav-item fs-5">
+                    <a class="nav-link active" aria-current="page" href="{{ route('tickets.index') }}">Tickets</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fs-5" href="{{ route('speakers.index') }}">Speakers</a>

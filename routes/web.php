@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpeakerController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TicketController;
 
 
 
@@ -23,3 +24,4 @@ Route::get('/', [EventController::class, 'index']);
 Route::resource('speakers', SpeakerController::class);
 Route::resource('partners', PartnerController::class);
 Route::resource('events', EventController::class);
+Route::resource('tickets', TicketController::class);

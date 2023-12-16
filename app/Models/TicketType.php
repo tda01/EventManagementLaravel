@@ -10,7 +10,7 @@ class TicketType extends Model
     public $fillable = ['id', 'description', 'price', 'eventID'];
 
     public function event() {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class, 'eventID');
     }
 
     public function soldTickets() {

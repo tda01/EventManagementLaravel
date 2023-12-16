@@ -114,7 +114,7 @@
 
 
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-primary">Edit event</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     <a href="{{ route('events.index') }}" class="btn btn-default">Cancel</a>
                 </div>
                     {!! Form::close() !!}
