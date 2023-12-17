@@ -25,7 +25,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" value = {{ $event->title }}>
+                                <input type="text" class="form-control" id="title" name="title" value ="{{ $event->title }}">
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
@@ -33,11 +33,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" value = {{ $event->location }}>
+                                <input type="text" class="form-control" id="location" name="location" value ="{{ $event->location }}">
                             </div>
                             <div class="mb-3">
                                 <label for="img" class="form-label">Img</label>
-                                <input type="text" class="form-control" id="img" name="img" value = {{ $event->img }}>
+                                <input type="text" class="form-control" id="img" name="img" value ="{{ $event->img }}">
                             </div>
                         </div>
                     </div>
@@ -50,19 +50,19 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" value = {{ $contact[0]->firstName }}>
+                                <input type="text" class="form-control" id="firstName" name="firstName" value ="{{ $contact[0]->firstName }}">
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" value = {{ $contact[0]->lastName }}>
+                                <input type="text" class="form-control" id="lastName" name="lastName" value = "{{ $contact[0]->lastName }}">
                             </div>
                             <div class="mb-3">
                                 <label for="phoneNumber" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value = {{ $contact[0]->phoneNumber }}>
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value ="{{ $contact[0]->phoneNumber }}">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value = {{ $contact[0]->email }}>
+                                <input type="email" class="form-control" id="email" name="email" value = "{{ $contact[0]->email }}">
                             </div>
                         </div>
                     </div>

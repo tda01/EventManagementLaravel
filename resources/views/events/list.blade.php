@@ -14,7 +14,12 @@
 
             <div class="card-body custom-card-body">
                 <div class="text-end ">
-                    <a href="{{ route('events.create') }}" class="btn btn-sm btn-primary">Add Event</a>
+                    @auth
+                        @if(Auth::user()->role === 'admin')
+                            <a href="{{ route('events.create') }}" class="btn btn-sm btn-primary">Add Event</a>
+                        @endif
+                    @endauth
+
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -66,11 +71,16 @@
                                     <div class="d-flex justify-content-center gap-2">
                                         <a class="btn btn-success" href="{{
 route('events.show',$event->id) }}">Vizualizare</a>
-                                        <a class="btn btn-primary" href="{{
+                                        @auth
+                                            @if(Auth::user()->role === 'admin')
+                                                <a class="btn btn-primary" href="{{
 route('events.edit',$event->id) }}">Modificare</a>
-                                        {{ Form::open(['method' => 'DELETE','route' => ['events.destroy', $event->id],'style'=>'display:inline']) }}
-                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                        {{ Form::close() }}
+                                                {{ Form::open(['method' => 'DELETE','route' => ['events.destroy', $event->id],'style'=>'display:inline']) }}
+                                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                {{ Form::close() }}
+
+                                            @endif
+                                        @endauth
                                     </div>
                                 </td>
                             </tr>

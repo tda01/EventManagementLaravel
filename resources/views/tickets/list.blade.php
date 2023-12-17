@@ -14,7 +14,12 @@
 
             <div class="card-body custom-card-body">
                 <div class="text-end ">
-                    <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-primary">Add Ticket</a>
+                    @auth
+                        @if(Auth::user()->role === 'admin')
+                            <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-primary">Add Ticket</a>
+                        @endif
+                    @endauth
+
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -38,11 +43,20 @@
                                     <div class="d-flex justify-content-center gap-2">
                                         <a class="btn btn-success" href="{{
 route('tickets.show',$ticket->id) }}">Vizualizare</a>
-                                        <a class="btn btn-primary" href="{{
+                                        @auth
+                                            @if(Auth::user()->role === 'admin')
+                                                <a class="btn btn-primary" href="{{
 route('tickets.edit',$ticket->id) }}">Modificare</a>
-                                        {{ Form::open(['method' => 'DELETE','route' => ['tickets.destroy', $ticket->id],'style'=>'display:inline']) }}
-                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                        {{ Form::close() }}
+                                                {{ Form::open(['method' => 'DELETE','route' => ['tickets.destroy', $ticket->id],'style'=>'display:inline']) }}
+                                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                {{ Form::close() }}
+                                            @endif
+                                        @endauth
+                                        <form action="{{ route('cart.addToCart', ['id' => $ticket->id]) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
+                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
