@@ -39,6 +39,10 @@ body::before {
     color: #FFE9FF;
 }
 
+.custom-navbar .navbar-brand:hover {
+    color: #FFE9FF;
+}
+
 .custom-card-header {
     background-color: #190729;
     color: #FFE9FF;

@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class StripeController extends Controller
 {
-    public function session (Request $request) {
+    public function session(Request $request) {
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
         $items = $request->get('items');
+
+
+        if (empty($items)) {
+
+            return redirect()->back()->with('message', 'Your cart is empty.');
+        }
 
         $lineItems = [];
         $totalPrice = 0;
