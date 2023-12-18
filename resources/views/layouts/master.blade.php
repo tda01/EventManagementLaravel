@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="{{ asset('/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/fonts.css') }}" rel="stylesheet">
 
@@ -49,7 +50,7 @@
             <ul class="navbar-nav ms-auto">
                 <div class="dropdown ms-auto me-5">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cart <span class="badge bg-dark">
+                        <i class="fas fa-shopping-cart"></i> Cart <span class="badge bg-dark">
             <?php
             $cartItems = session()->get('cart', []);
             $totalQuantity = 0;
@@ -105,7 +106,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('cart.view') }}">
-                                <span class="btn btn-dark w-100">Check Cart</span>
+                                <span class="btn btn-dark w-100">View Cart</span>
                             </a>
                         </li>
 

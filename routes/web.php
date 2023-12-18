@@ -26,20 +26,22 @@ use App\Http\Controllers\TicketController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('events', EventController::class)->except('events.create', 'events.store', 'events.edit', 'events.update', 'events.destroy');
 Route::resource('tickets', TicketController::class)->except('tickets.create', 'tickets.store', 'tickets.edit', 'tickets.update', 'tickets.destroy');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+//Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
 Route::post('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.updateCart');
-Route::get('/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
+
 
 
 
 
 Route::middleware(['auth'])->group(function () {
-
-
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+    Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
 });
 
 

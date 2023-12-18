@@ -41,11 +41,11 @@
                                 <td class="align-middle">{{ $ticket->price }} RON</td>
                                 <td class="align-middle">
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a class="btn btn-success" href="{{
+                                        <a class="btn btn-info" href="{{
 route('tickets.show',$ticket->id) }}">Vizualizare</a>
                                         @auth
                                             @if(Auth::user()->role === 'admin')
-                                                <a class="btn btn-primary" href="{{
+                                                <a class="btn btn-success" href="{{
 route('tickets.edit',$ticket->id) }}">Modificare</a>
                                                 {{ Form::open(['method' => 'DELETE','route' => ['tickets.destroy', $ticket->id],'style'=>'display:inline']) }}
                                                 {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
