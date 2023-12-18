@@ -84,7 +84,6 @@
                 <form action="{{ route('session') }}" method="POST">
                     @csrf
                     @foreach($cartItems as $itemId => $item)
-                        <!-- Pass the necessary item details for Stripe checkout -->
 
                         <input type="hidden" name="items[{{ $itemId }}][productname]" value="{{ $item['event'] }} - {{ $item['description'] }}">
                         <input type="hidden" name="items[{{ $itemId }}][price]" value="{{ $item['price'] }}">

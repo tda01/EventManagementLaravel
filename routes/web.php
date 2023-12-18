@@ -28,6 +28,11 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{id}/home', [EventController::class, 'showHomePage'])->name('events.showHomePage');
+Route::get('/{id}/agenda', [EventController::class, 'showAgenda'])->name('events.showAgenda');
+Route::get('/{id}/speakers', [EventController::class, 'showSpeakers'])->name('events.showSpeakers');
+Route::get('/{id}/partners', [EventController::class, 'showPartners'])->name('events.showPartners');
+Route::get('/{id}/contact', [EventController::class, 'showContact'])->name('events.showContact');
 Route::resource('events', EventController::class)->except('events.create', 'events.store', 'events.edit', 'events.update', 'events.destroy');
 Route::resource('tickets', TicketController::class)->except('tickets.create', 'tickets.store', 'tickets.edit', 'tickets.update', 'tickets.destroy');
 //Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

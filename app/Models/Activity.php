@@ -14,8 +14,7 @@ class Activity extends Model
         return $this->belongsTo(EventDay::class);
     }
 
-    public function speaker()
-    {
-        return $this->belongsTo(Speaker::class);
+    public function speaker() {
+        return $this->belongsTo(Speaker::class, 'speakerID');
     }
 }

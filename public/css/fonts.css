@@ -20,6 +20,8 @@ body::before {
     z-index: -1;
     background-image: linear-gradient(to right bottom, #7e22ce, #711eb9, #651ba4, #581790, #4c147c);
     background-size: cover;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .card {
@@ -48,3 +50,36 @@ body::before {
     color: #FFE9FF;
 }
 
+.event-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.event-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.speaker-card {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.speaker-card .card {
+    background-color: #190729;
+    color: #FFE9FF;
+}
+
+.speaker-card .card img {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.speaker-card .card .card-body {
+    padding: 10px;
+}
+
+.custom-container {
+    color: #FFE9FF;
+}

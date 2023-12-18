@@ -69,6 +69,8 @@
                                 <td class="align-middle">{{ $event->img }}</td>
                                 <td class="align-middle">
                                     <div class="d-flex justify-content-center gap-2">
+                                        <a class="btn btn-outline-success" href="{{
+route('events.showHomePage',$event->id) }}">Site</a>
                                         <a class="btn btn-success" href="{{
 route('events.show',$event->id) }}">Vizualizare</a>
                                         @auth

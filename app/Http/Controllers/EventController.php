@@ -139,6 +139,32 @@ added successfully!');
         return view('events.show', compact('event'));
     }
 
+    public function showHomePage(string $id) {
+        $event = Event::find($id);
+        return view('event.home', compact('event'));
+    }
+
+    public function showAgenda(string $id) {
+        $event = Event::with('eventDays.activities.speaker')->find($id);
+        return view('event.agenda', compact('event'));
+    }
+
+    public function showSpeakers(string $id) {
+        $event = Event::with('speakers')->find($id);
+        return view('event.speakers', compact('event'));
+    }
+
+    public function showPartners(string $id) {
+        $event = Event::with('partners')->find($id);
+        return view('event.partners', compact('event'));
+    }
+
+    public function showContact(string $id) {
+        $event = Event::with('contact')->find($id);
+        return view('event.contact', compact('event'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
